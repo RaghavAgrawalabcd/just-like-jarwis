@@ -3,10 +3,8 @@ import speech_recognition as sr
 import pyaudio
 import time
 import webbrowser
-import os
 Text=''
 Continue=True
-
 responses=["Welcome to the interface of DummyAI\n***** I am Ram *****","MY name is Ram","Thanks for using me","Sorry , Its beyond my reach","Mention Not"]
 def extractNofromText(text):
     a=[]
@@ -86,7 +84,8 @@ def answer(Txt):
     engine.runAndWait()
     engine.stop()
 print("Plz give me voice command  ")
-while Continue:
+count=0
+while Continue and count<10:
  r = sr.Recognizer()
  with sr.Microphone() as source:  # use the default microphone as the audio source
    try:
@@ -131,3 +130,4 @@ while Continue:
    except  LookupError:  # speech is unintelligible
        print("Could not understand audio")
  print("Say STOP to pause...")
+ count=count+1
